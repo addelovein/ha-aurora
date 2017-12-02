@@ -1,4 +1,3 @@
-from nanoleaf import Aurora
 import logging
 import voluptuous as vol
 
@@ -10,7 +9,7 @@ from homeassistant.components.light import (
 from homeassistant.const import CONF_HOST, CONF_API_KEY, CONF_NAME
 import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = ['nanoleaf==0.4.0']
+REQUIREMENTS = ['nanoleaf==0.4.1']
 
 SUPPORT_AURORA = ( SUPPORT_BRIGHTNESS | SUPPORT_COLOR_TEMP )
 
@@ -25,6 +24,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
+    from nanoleaf import Aurora
     host = config.get(CONF_HOST)
     apikey = config.get(CONF_API_KEY)
     name = config.get(CONF_NAME)
